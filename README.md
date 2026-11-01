@@ -2,12 +2,11 @@
    <img width="600" src="https://github.com/user-attachments/assets/4e443f9c-02a7-483a-a9da-9afa6db6be2a" />
 </p>
 
-# Forge-X: Klipper Firmware Mod for Flashforge Adventurer 5M / 5M Pro
+# Forge-X: Klipper Firmware Mod for Flashforge Adventurer 5M 
 
-**Forge-X** is a free, _unofficial_ firmware mod for the **Flashforge Adventurer 5M and 5M Pro** (AD5M) 3D printers. It adds an adapted **Klipper** with **Moonraker**, **Fluidd**, and **Mainsail** on top of the stock firmware, together with a lightweight touchscreen (**Feather**), calibration tools, print-safety features, Power Loss Recovery, and recovery tools. The mod can be fully removed.
+**Forge-X** is a free, _unofficial_ firmware mod for the **Flashforge Adventurer 5M (AD5M) 3D printers. It adds an adapted **Klipper** with **Moonraker**, **Fluidd**, and **Mainsail** on top of the stock firmware, together with a lightweight touchscreen (**Feather**), calibration tools, print-safety features, Power Loss Recovery, and recovery tools. The mod can be fully removed.
 
 > [!CAUTION]
-> *If you install this mod on your AD5M (Pro), you risk voiding your warranty or damaging your printer.*
 > *After installation or uninstallation, check all printer parameters and perform a full recalibration. Skipping this step may damage your printer.*
 > *Proceed at your own risk!*
 
@@ -22,7 +21,7 @@ The printer runs vendor firmware on a Linux kernel. It is **not** a general-purp
 
 ## Quick facts
 
-- **Printers**: Flashforge Adventurer 5M and Adventurer 5M Pro.
+- **Printers**: Flashforge Adventurer 5M.
 - **Stock firmware**: every version from 2.6.5 up to 5.1.7 (the newest checked). The version does not matter unless you use the Stock screen; see [Compatibility](/docs/COMPATIBILITY.md).
 - **What it is**: a reversible mod on top of the stock firmware, not a replacement of the whole system.
 - **Klipper**: the FlashForge host Klipper (0.11 generation) with [fixes and backports from newer upstream Klipper](/docs/KLIPPER.md). The stock MCU firmware is not reflashed.
@@ -32,9 +31,6 @@ The printer runs vendor firmware on a Linux kernel. It is **not** a general-purp
 - **License**: GPL-3.0 for Forge-X and its Klipper components. The native binary components have a [separate license](/LICENSE-BINARIES.md).
 
 ## Quick start
-
-> [!CAUTION]
-> Releases before **1.4.1-11** have a Smart Park / `MOVE_SAFE` bug. Do not use KAMP, and do not use `MOVE_SAFE` while relative positioning (`G91`) is active. Upgrade to **1.4.1-11 or later** first.
 
 **Required**
 
