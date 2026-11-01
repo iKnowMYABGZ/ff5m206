@@ -125,6 +125,8 @@ class ParkedPrint:
             self.paused = self.sd_paused = False
             self.status["virtual_sdcard"]["is_active"] = False
             self.status["print_stats"]["state"] = "cancelled"
+        elif name == "CLEAR_PAUSE":
+            self.paused = False
         elif name == "M24.1":
             self.sd_starts.append((tuple(self.move.last_position), self.move.absolute_extrude))
             self.status["virtual_sdcard"]["is_active"] = True
@@ -293,6 +295,22 @@ class CollisionPauseIntegrationTest(unittest.TestCase):
 
 
 class TimelapsePauseStateTest(unittest.TestCase):
+    def test_stale_pause_flag_cannot_leave_a_running_file_streaming(self):
+        job = ParkedPrint()
+        job.paused = True
+        job.refresh()
+        job.runtime.run("PAUSE")
+        self.assertFalse(job.status["virtual_sdcard"]["is_active"])
+        self.assertTrue(job.paused)
+        self.assertEqual(job.status["print_stats"]["state"], "paused")
+        moves = len(job.moves)
+        job.runtime.run("PAUSE")
+        self.assertEqual(len(job.moves), moves)
+        job.runtime.run("RESUME")
+        self.assertTrue(job.status["virtual_sdcard"]["is_active"])
+        self.assertFalse(job.paused)
+        self.assert_restored(job)
+
     def test_end_print_applies_configured_lift_with_and_without_final_photo(self):
         for final_photo in (False, True):
             for relative_axes in (False, True):
